@@ -73,6 +73,7 @@ find({ no_chdir=>1, wanted=>sub {
 	my $rel = abs2rel($_,$tmpdir);
 	# Possible To-Do for Later: Why does abs2rel sometimes return the empty string in v5.6.2,
 	# at least in my testing environment? This is a workaround:
+	# (Update: now requiring at least Perl v5.8; this workaround can probably be removed)
 	$rel = curdir if $rel eq '' && $_ eq $tmpdir;
 	push @found, $rel;
 } }, $tmpdir);

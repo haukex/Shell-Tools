@@ -109,7 +109,7 @@ $EXPORT_TAGS{"Try::Tiny"} = [_EXP_TRY_TINY];
 
  my $dir      = dir('foo', 'bar');        # Path::Class::Dir object
  my $file     = file('bob', 'file.txt');  # Path::Class::File object
- # interfacecs to File::Spec's tempdir and tempfile
+ # interfaces to File::Spec's tempdir and tempfile
  my $tempdir  = Path::Class::tempdir(CLEANUP=>1);   # isa Path::Class::Dir
  my ($fh,$fn) = $tempdir->tempfile(UNLINK=>1);      # $fn is NOT an object
 
