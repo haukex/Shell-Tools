@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 ## no critic (RequireUseStrict, RequireUseWarnings)
-use Shell::Tools Shell=>[ 'which', [xfile=>'file'] ];
+use Shell::Tools::Extra Shell=>[ 'which', [xfile=>'file'] ];
 use warnings FATAL=>'IPC::Run3::Shell';
 use autodie qw/chdir readlink/;
 
