@@ -63,8 +63,9 @@ ok -f $xyz_txt, "copy 1";
 ok -f $abc_txt, "copy 2";
 
 open my $ofh, ">>", $xyz_txt or fail "open failed: $!";
-$ofh->binmode(":raw"); # IO::File / IO::Handle
-$ofh->autoflush(1);
+# ->binmode doesn't work on v5.10 and older; haven't found the reason yet
+#$ofh->binmode(":raw");
+$ofh->autoflush(1);  # IO::File / IO::Handle
 $ofh->print("quz") or fail "print failed";
 close $ofh;
 

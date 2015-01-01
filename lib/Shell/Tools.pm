@@ -93,8 +93,10 @@ Perl before v5.14 did not load these automatically.
 Loading these modules allows you to do things like:
 
  open my $fh, ">", $file or die $!;
- $fh->binmode(":raw");
  $fh->autoflush(1);
+ $fh->print("Hello");
+ # Note: calling binmode this way may not work on older Perls
+ $fh->binmode(":raw");
 
 =cut
 
