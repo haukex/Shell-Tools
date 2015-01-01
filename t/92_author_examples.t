@@ -52,10 +52,11 @@ my ($out,$err,$code) = capture {
 		system $^X, $FOLLOW, '--', 'aaaaa';
 	};
 is $code, 0, 'follow $?';
-is $out, <<"END_OUT", 'follow stdout';
-$file_a: symbolic link to `$file_b'
-$file_b: symbolic link to `$file_c_rel'
-$file_c: POSIX shell script text executable
-END_OUT
 is $err, '', 'follow stderr';
+## no critic (ProhibitComplexRegexes)
+like $out, qr{
+^ \Q$file_a: symbolic link to `$file_b'
+$file_b: symbolic link to `$file_c_rel'
+$file_c: \E[^\n]*shell\ script[^\n]*\n
+$ }x, 'follow stdout';
 
