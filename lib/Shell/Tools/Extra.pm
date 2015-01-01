@@ -3,7 +3,7 @@ package Shell::Tools::Extra;
 use warnings;
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 Name
 
@@ -31,7 +31,7 @@ from CPAN, in addition to those from L<Shell::Tools|Shell::Tools>.
 
 =head1 Version
 
-This document describes version 0.01 of Shell::Tools::Extra.
+This document describes version 0.02 of Shell::Tools::Extra.
 
 =head1 Exports
 
