@@ -18,9 +18,11 @@ Shell::Tools - Perl extension to reduce boilerplate in Perl shell scripts
  use IO::File ();
  use IO::Handle ();
  use Carp qw/carp croak confess/;
- use Getopt::Std 1.04 'getopts';
- # also sets up default HELP_MESSAGE and VERSION_MESSAGE subs (see below)
  use Pod::Usage 'pod2usage';
+ use Getopt::Std 1.04 'getopts';
+ sub main::HELP_MESSAGE { ... }            # calls pod2usage()
+ sub main::VERSION_MESSAGE { ... }         # see documentation below
+ $Getopt::Std::STANDARD_HELP_VERSION = 1;  # exit after --help or --version
  use Cwd qw/getcwd cwd abs_path/;
  use File::Spec::Functions qw/canonpath catdir catfile curdir rootdir updir
      no_upwards file_name_is_absolute splitdir abs2rel rel2abs/;
