@@ -37,16 +37,18 @@ my %EXTRA_MODULES = (
 our %HAVE_MODULE;
 our $HAVE_ALL_EXTRAS = 1;
 our $HAVE_REQUIRED_EXTRAS = 1;
-our $EXTRA_MODULE_REPORT = "### Extra Module Report\n";
+our $EXTRA_MODULE_REPORT = "--- Extra Module Report ---\n";
 for my $mod (sort keys %EXTRA_MODULES) {
-	my $code = qq{ require $mod; \$mod->VERSION( \$EXTRA_MODULES{\$mod}{version}||() )||"unknown" };
-	$HAVE_MODULE{$mod} = eval $code; ## no critic (ProhibitStringyEval)
+	my $have_ver = eval qq{ require $mod; \$mod->VERSION()||"unknown" };  ## no critic (ProhibitStringyEval)
+	my $test_ver = $EXTRA_MODULES{$mod}{version} ? eval { $mod->VERSION($EXTRA_MODULES{$mod}{version}); 1 } : 1;
+	$HAVE_MODULE{$mod} = $test_ver && $have_ver;
 	$HAVE_ALL_EXTRAS = 0 unless $HAVE_MODULE{$mod};
 	$HAVE_REQUIRED_EXTRAS = 0 if $EXTRA_MODULES{$mod}{required} && !$HAVE_MODULE{$mod};
 	$EXTRA_MODULE_REPORT .= "$mod: "
 		.($EXTRA_MODULES{$mod}{required}?"required":"optional")
 		.", want ".($EXTRA_MODULES{$mod}{version}||"any version")
-		.", have ".($HAVE_MODULE{$mod}||"NONE")."\n";
+		.", have ".($have_ver||"NONE")
+		.", ".($HAVE_MODULE{$mod}?"OK":"NOT AVAILABLE")."\n";
 }
 
 sub import {  ## no critic (RequireArgUnpacking)

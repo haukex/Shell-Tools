@@ -20,16 +20,18 @@ use Shell_Tools_Testlib;
 
 use Test::More tests=>1;
 
-diag $EXTRA_MODULE_REPORT;
+my $modrep = $EXTRA_MODULE_REPORT;
+$modrep =~ s/^/    /mg;
+diag $modrep;
 
 if ($HAVE_ALL_EXTRAS) {
-	diag 'OK, will be able to fully test Shell::Tools::Extra';
+	diag '--> OK, will be able to fully test Shell::Tools::Extra';
 }
 elsif ($HAVE_REQUIRED_EXTRAS) {
-	diag 'Will be able to test Shell::Tools::Extra WITHOUT some/all optional modules';
+	diag '--> Will be able to test Shell::Tools::Extra WITHOUT some/all optional modules';
 }
 else {
-	diag 'WARNING: Will NOT be able to test Shell::Tools::Extra !';
+	diag '--> WARNING: Will NOT be able to test Shell::Tools::Extra !';
 }
 
 BAIL_OUT 'All extra modules are required during author testing'
