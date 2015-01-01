@@ -16,6 +16,7 @@ t/30_extra_funcs.t
 t/31_ipc_run3_shell.t
 t/90_author_critic.t
 t/91_author_pod.t
+t/92_author_examples.t
 t/perlcriticrc
 t/Shell_Tools_Testlib.pm
 t/test_opts_usage.pl
