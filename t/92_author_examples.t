@@ -25,6 +25,7 @@ use File::Temp 'tempdir';
 use File::Spec::Functions qw/catdir catfile updir/;
 use File::Path 'make_path';
 use Capture::Tiny 'capture';
+use Config;
 
 # ### Test the "follow" script ###
 
@@ -49,7 +50,7 @@ symlink($file_b, $file_a) or croak $!;  # abs symlink
 
 my ($out,$err,$code) = capture {
 		local $ENV{PATH} = "$dir_foo:$ENV{PATH}";  # so "which" can find it
-		system $^X, $FOLLOW, '--', 'aaaaa';
+		system $Config{perlpath}, $FOLLOW, '--', 'aaaaa';
 	};
 is $code, 0, 'follow $?';
 is $err, '', 'follow stderr';

@@ -67,6 +67,7 @@ WriteMakefile(
 		'Capture::Tiny'          => 0,
 		# Perl core modules
 		'Test::More'             => 0,
+		'Config'                 => 0,
 		# excluding any modules for author tests
 	},
 );

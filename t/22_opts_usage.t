@@ -21,6 +21,7 @@ use Shell_Tools_Testlib;
 use Test::More;
 
 use Capture::Tiny 'capture';
+use Config;
 
 use Shell::Tools;
 
@@ -32,49 +33,49 @@ my $USAGE_RE = qr/\bUsage:\s*test_opts_usage\.pl \[OPTIONS\] FILENAME.*?-b BAR\s
 # variants of VERSION_MESSAGE (using %ENV to control test script?)
 
 subtest 'no filename' => sub {
-	my ($out,$err) = capture { system $^X, $script };
+	my ($out,$err) = capture { system $Config{perlpath}, $script };
 	ok $? != 0, 'perl failed';
 	is $out, '', 'no stdout';
 	like $err, qr/\bmust specify a filename\b.+?$USAGE_RE/si, 'stderr message correct';
 };
 
 subtest 'bad option' => sub {
-	my ($out,$err) = capture { system $^X, $script, '-x' };
+	my ($out,$err) = capture { system $Config{perlpath}, $script, '-x' };
 	ok $? != 0, 'perl failed';
 	is $out, '', 'no stdout';
 	like $err, qr/\bunknown option\b.+?$USAGE_RE/si, 'stderr message correct';
 };
 
 subtest '--version' => sub {
-	my ($out,$err) = capture { system $^X, $script, '--version' };
+	my ($out,$err) = capture { system $Config{perlpath}, $script, '--version' };
 	ok $? == 0, 'perl ok';
 	is $out, "test_opts_usage.pl Version 0.123\n", 'stdout message correct';
 	is $err, '', 'no stderr';
 };
 
 subtest '--help' => sub {
-	my ($out,$err) = capture { system $^X, $script, '--help' };
+	my ($out,$err) = capture { system $Config{perlpath}, $script, '--help' };
 	ok $? != 0, 'perl failed';
 	like $out, qr/\btest_opts_usage.pl Version 0.123\b.+?$USAGE_RE/si, 'stdout message correct';
 	is $err, '', 'no stderr';
 };
 
 subtest 'no options' => sub {
-	my ($out,$err) = capture { system $^X, $script, "FileName" };
+	my ($out,$err) = capture { system $Config{perlpath}, $script, "FileName" };
 	ok $? == 0, 'perl ok';
 	is $out, 'Foo=0, Bar=(0), FN=FileName', 'stdout correct';
 	is $err, '', 'no stderr';
 };
 
 subtest 'bar bad option' => sub {
-	my ($out,$err) = capture { system $^X, $script, '-b', 'xfailx', "FileName" };
+	my ($out,$err) = capture { system $Config{perlpath}, $script, '-b', 'xfailx', "FileName" };
 	ok $? != 0, 'perl failed';
 	is $out, '', 'no stdout';
 	like $err, qr/\bbad bar option\b.+?$USAGE_RE/si, 'stderr message correct';
 };
 
 subtest 'full options' => sub {
-	my ($out,$err) = capture { system $^X, $script, '-b', 'boop', '-f', "FileName" };
+	my ($out,$err) = capture { system $Config{perlpath}, $script, '-b', 'boop', '-f', "FileName" };
 	ok $? == 0, 'perl ok';
 	is $out, 'Foo=1, Bar=boop, FN=FileName', 'stdout correct';
 	is $err, '', 'no stderr';
