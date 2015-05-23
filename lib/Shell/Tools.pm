@@ -405,6 +405,7 @@ it's left up to the user to import this module if desired.
 
 Configuration file parsers:
 L<Config::General|Config::General>,
+L<Config::Perl|Config::Perl> (one of my modules),
 L<Config::IniFiles|Config::IniFiles>,
 L<Config::INI|Config::INI> (simpler INI files), and
 L<Config::Tiny|Config::Tiny> (I<even> simpler INI files).
