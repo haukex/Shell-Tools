@@ -23,7 +23,7 @@ use Test::More tests=>4;
 BEGIN {
 	use_ok 'Shell::Tools';
 }
-is $Shell::Tools::VERSION, '0.03', 'version matches tests';
+is $Shell::Tools::VERSION, '0.04', 'version matches tests';
 
 ok defined(&tempfile), 'tempfile (File::Temp) present';
 my ($fh, $fn) = tempfile(UNLINK=>1);

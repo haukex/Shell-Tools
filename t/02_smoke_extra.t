@@ -24,7 +24,7 @@ use Test::More $HAVE_REQUIRED_EXTRAS ? (tests=>5)
 BEGIN {
 	use_ok 'Shell::Tools::Extra';
 }
-is $Shell::Tools::Extra::VERSION, '0.03', 'version matches tests';
+is $Shell::Tools::Extra::VERSION, '0.04', 'version matches tests';
 
 # check Shell::Tools exports, since Shell::Tools::Extra is supposed to export those too
 ok defined(&tempfile), 'tempfile (File::Temp) present';

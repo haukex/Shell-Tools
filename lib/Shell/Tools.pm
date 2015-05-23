@@ -3,7 +3,7 @@ package Shell::Tools;
 use warnings;
 use strict;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 Name
 
@@ -53,8 +53,7 @@ CGI scripts, object-oriented applications and the like.
 
 =head1 Version
 
-This document describes version 0.03 of Shell::Tools.
-B<This is a development version.>
+This document describes version 0.04 of Shell::Tools.
 
 =head1 Exports
 
