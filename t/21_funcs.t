@@ -88,7 +88,7 @@ is basename($abc_txt), 'abc.txt', "basename";
 
 is rel2abs(curdir), canonpath(getcwd), 'getcwd, curdir, rel2abs';
 is canonpath(cwd), canonpath(getcwd), 'cwd';
-is canonpath(abs_path(catdir($tmpdir,"foo",updir))), canonpath($tmpdir), "abs_path";
+is abs_path(catdir($tmpdir,"foo",updir)), abs_path($tmpdir), "abs_path";
 
 my @files = do { opendir my $dh, catdir($tmpdir,"foo") or fail $!;
 	no_upwards readdir $dh };

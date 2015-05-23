@@ -57,7 +57,7 @@ $tmpdir->file('blah.ini')->touch;
 my $prevwd = cwd;
 {
 	my $pushd = pushd($tmpdir);
-	is canonpath(cwd), canonpath($tmpdir), 'work dir changed';
+	is abs_path(cwd), abs_path($tmpdir), 'work dir changed';
 	
 	my @files = File::Find::Rule->file->name('*.txt')->in(curdir);
 	@files = sort @files;
