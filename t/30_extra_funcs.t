@@ -59,7 +59,7 @@ my $prevwd = cwd;
 	my $pushd = pushd($tmpdir);
 	is abs_path(cwd), abs_path($tmpdir), 'work dir changed';
 	
-	my @files = File::Find::Rule->file->name('*.txt')->in(curdir);
+	my @files = rule->file->name('*.txt')->in(curdir);
 	@files = sort @files;
 	is_deeply \@files, ['abc.txt','xyz.txt'], 'File::Find::Rule';
 }

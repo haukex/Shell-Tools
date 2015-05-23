@@ -17,7 +17,7 @@ Shell::Tools::Extra - Perl extension to reduce boilerplate in Perl shell scripts
  use Try::Tiny qw/try catch finally/;
  use Path::Class qw/dir file/;
  use File::pushd 'pushd';
- use File::Find::Rule ();
+ use File::Find::Rule 'rule';
  
  # and
  use Shell::Tools::Extra  Shell => [ IPC_RUN3_SHELL_ARGS ];
@@ -142,11 +142,18 @@ $EXPORT_TAGS{"File::pushd"} = [_EXP_FILE_PUSHD];
 
 =head2 L<File::Find::Rule|File::Find::Rule>
 
- my @files = File::Find::Rule->file->name('*.pm')->in(@INC);
+ my @files = rule->file->name('*.pm')->in(@INC);
+ my $rule = rule->dir->name(qr/te?mp/i)->start($ENV{HOME});
+ while ( defined( my $tmpdir = $rule->match ) ) {
+     ...
+ }
 
 =cut
 
-use File::Find::Rule ();
+use constant _EXP_FILE_FIND_RULE => qw/rule/;
+use File::Find::Rule _EXP_FILE_FIND_RULE;  # CPAN
+push @EXPORT, _EXP_FILE_FIND_RULE;
+$EXPORT_TAGS{"File::Find::Rule"} = [_EXP_FILE_FIND_RULE];
 
 
 1;
