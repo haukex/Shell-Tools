@@ -51,7 +51,7 @@ require Shell::Tools;
 sub import {  ## no critic (RequireArgUnpacking)
 	for (my $i=0;$i<@_;$i++) {
 		if ( $_[$i] && $_[$i] eq 'Shell' ) {
-			_import_Shell((caller)[0], $_[$i+1]);
+			_import_Shell(scalar caller, $_[$i+1]);
 			splice @_, $i, 2;  $i--;
 		}
 	}
@@ -61,15 +61,18 @@ sub import {  ## no critic (RequireArgUnpacking)
 
 =head2 L<IPC::Run3::Shell|IPC::Run3::Shell>
 
- use Shell::Tools  Shell => [ qw/echo cat/ ];
- use Shell::Tools  Shell => 'who';
+ use Shell::Tools::Extra  Shell => 'echo';
+   # = use IPC::Run3::Shell 'echo';                # import "echo"
+ use Shell::Tools::Extra  Shell => [ qw/cat who/ ];
+   # = use IPC::Run3::Shell qw/cat who/;           # import "cat" and "who"
+ use Shell::Tools::Extra  Shell => [ [ d => '/bin/date' ] ];
+   # = use IPC::Run3::Shell [ d => '/bin/date' ];  # alias "d" to "date"
 
-The argument(s) will be passed through as the arguments to
-L<IPC::Run3::Shell|IPC::Run3::Shell>'s import.
-Note that C<Shell> must be followed by exactly one argument, either
-a single scalar or an arrayref.
-
-This module is optional: If no C<Shell> arguments are present in C<use>,
+The word C<Shell> followed by either a string or an array reference
+may be placed anywhere in the import list,
+which will cause the L<IPC::Run3::Shell|IPC::Run3::Shell> module
+to be loaded with those arguments.
+If no C<Shell> arguments are present in C<use>,
 this module will not be loaded and it does not need to be installed.
 
 =cut
