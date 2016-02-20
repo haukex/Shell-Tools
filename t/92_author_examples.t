@@ -55,9 +55,9 @@ my ($out,$err,$code) = capture {
 is $code, 0, 'follow $?';
 is $err, '', 'follow stderr';
 ## no critic (ProhibitComplexRegexes)
-like $out, qr{
-^ \Q$file_a: symbolic link to `$file_b'
-$file_b: symbolic link to `$file_c_rel'
-$file_c: \E[^\n]*shell\ script[^\n]*\n
+like $out, qr{ ^
+\Q$file_a: symbolic link to `$file_b'\E\ ?\n
+\Q$file_b: symbolic link to `$file_c_rel'\E\ ?\n
+\Q$file_c: \E[^\n]*shell\ script[^\n]*\n
 $ }x, 'follow stdout';
 
