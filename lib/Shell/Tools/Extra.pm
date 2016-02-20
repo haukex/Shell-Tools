@@ -146,7 +146,7 @@ $EXPORT_TAGS{"File::pushd"} = [_EXP_FILE_PUSHD];
 =head2 L<File::Find::Rule|File::Find::Rule>
 
  my @files = rule->file->name('*.pm')->in(@INC);
- my $rule = rule->dir->name(qr/te?mp/i)->start($ENV{HOME});
+ my $rule = rule->directory->name(qr/te?mp/i)->start($ENV{HOME});
  while ( defined( my $tmpdir = $rule->match ) ) {
      ...
  }
