@@ -30,7 +30,7 @@ recommended modules that can be installed from CPAN. The full list of
 modules and their versions can be found in the file "Makefile.PL".
 This module should work on any platform supported by these modules.
 
-AUHTOR, COPYRIGHT AND LICENCE
+AUHTOR, COPYRIGHT AND LICENSE
 
 Copyright (c) 2014 Hauke Daempfling (haukex@zero-g.net).
 
