@@ -9,6 +9,9 @@ Please see the module's documentation (POD) for details
 (try the command `perldoc lib/Shell/Tools.pm`)
 and the file `Changes` for version information.
 
+[![Travis CI Build Status](https://travis-ci.org/haukex/Shell-Tools.svg)](https://travis-ci.org/haukex/Shell-Tools)
+[![CPAN Testers](https://badges.zero-g.net/cpantesters/Shell-Tools.svg)](http://matrix.cpantesters.org/?dist=Shell-Tools)
+
 Installation
 ------------
 
