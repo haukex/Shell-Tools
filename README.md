@@ -1,7 +1,8 @@
 Shell::Tools
 ============
 
-This is the distribution of the Perl module `Shell::Tools`.
+This is the distribution of the Perl module
+[`Shell::Tools`](https://metacpan.org/pod/Shell::Tools).
 
 It is a Perl extension to reduce boilerplate in Perl shell scripts.
 
