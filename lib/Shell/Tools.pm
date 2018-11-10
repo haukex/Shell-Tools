@@ -160,6 +160,7 @@ use Pod::Usage _EXP_POD_USAGE;  # core since Perl v5.6.0
 push @EXPORT, _EXP_POD_USAGE;
 $EXPORT_TAGS{"Pod::Usage"} = [_EXP_POD_USAGE];
 
+#TODO Later: The following two aren't being hit by code coverage
 sub main::HELP_MESSAGE {
 	pod2usage(-output=>shift);
 	return;
