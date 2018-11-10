@@ -11,6 +11,7 @@ Please see the module's documentation (POD) for details
 and the file `Changes` for version information.
 
 [![Travis CI Build Status](https://travis-ci.org/haukex/Shell-Tools.svg)](https://travis-ci.org/haukex/Shell-Tools)
+[![Coverage Status](https://coveralls.io/repos/github/haukex/Shell-Tools/badge.svg)](https://coveralls.io/github/haukex/Shell-Tools)
 [![CPAN Testers](https://badges.zero-g.net/cpantesters/Shell-Tools.svg)](http://matrix.cpantesters.org/?dist=Shell-Tools)
 
 Installation

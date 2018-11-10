@@ -11,3 +11,10 @@ perl:
     - "5.12"
     - "5.10"
     - "5.8"
+
+
+# coveralls.io support:
+before_install:
+    - cpanm --notest Devel::Cover::Report::Coveralls
+after_success:
+    - cover -test -coverage default,-pod -report coveralls
