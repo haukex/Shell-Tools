@@ -77,6 +77,7 @@ this module will not be loaded and it does not need to be installed.
 
 =cut
 
+#TODO: add an option which enables autodie and fatal warnings for IPC::Run3::Shell
 sub _import_Shell {
 	my ($destpack, $args) = @_;
 	croak "no arguments for Shell import specified" unless $args;
